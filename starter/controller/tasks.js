@@ -34,21 +34,18 @@ const asyncWrapper = require('../middleware/async')
  
 
 
-//Post needs a body
+//POST Method needs a body - req.
 //pass it along to the module create method
 //since we are using await we want to refactor this callback function and use await instead
-const createTask = async (req, res) => {
-    try {
+const createTask = asyncWrapper ( async (req, res) => {
+   
     const task = await Task.create(req.body)
-    res.status(201).json({ task }) 
-    }catch (error) {
-        res.status(500).json({msg: error.message})
-    }
-
-}
+    res.status(200).json({ task }) 
+   
+})
 
 // **LINK https://mongoosejs.com/docs/api/model.html#model_Model-findOne 
-const getSingleTask = async (req,res) => {
+const getSingleTask = async (req,res, next) => {
 
     try{
         //first destructure (good practise)  **id: taskID is a alias
@@ -57,6 +54,9 @@ const getSingleTask = async (req,res) => {
         //condition
         if (!task) {
             //USE return 
+            const error = new Error('Not Found');
+            error.status  = 404;
+            return next (error)
             return res.status(404).json({msg: `no task with this ID ${taskID}`})
     }//else
 res.status(200).json({ task })

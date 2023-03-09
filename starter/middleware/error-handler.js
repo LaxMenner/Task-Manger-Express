@@ -4,7 +4,8 @@
 //creating own error handler
 
 const errorHandlerMiddleware = (err, req, res, next) => {
-    return res.status(500).json( { msg: err })
+    //console.log(err)
+    return res.status(err.status).json ({msg: err.message})
   }
 
   // we received an error! WHY? didnt export the module
