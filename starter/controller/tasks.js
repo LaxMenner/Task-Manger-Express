@@ -97,25 +97,6 @@ res.status(200).json({ task })
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //------------------------------------------------------------------------------------------------
 
 // https://mongoosejs.com/docs/api/model.html#model_Model-findOneAndDelete
