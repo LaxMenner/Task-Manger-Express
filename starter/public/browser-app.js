@@ -11,7 +11,7 @@ const showTasks = async () => {
       data: { tasks },
     } = await axios.get('/api/v1/tasks')
     if (tasks.length < 1) {
-      tasksDOM.innerHTML = '<h5 class="empty-list">heute noch keine Aufgabe</h5>'
+      tasksDOM.innerHTML = '<h5 class="empty-list">no tasks today</h5>'
       loadingDOM.style.visibility = 'hidden'
       return
     }
