@@ -1,1 +1,7 @@
-# responsive Task - Manager with vanilla JS and Express
+# Responsive Task Manager
+## Tech-Stack
+
+-Frontend: vanilla JS, HTML, CSS
+
+-Backend: Node.js, Express.js, MongoDB
+
